@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #0077b6;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #005f8c;
+        }
+
+        .result {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Book Your Guide</h2>
+        <form id="bookingForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username" required readonly value="Logged-in User">
+
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" required>
+
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" required>
+
+            <button type="button" onclick="calculateCost()">Calculate Cost</button>
+            <div id="result" class="result"></div>
+
+            <button type="button" onclick="downloadBooking()">Download Booking</button>
+            <button type="button" onclick="printBooking()">Print Booking</button>
+        </form>
+    </div>
+
+    <script>
+        // Restrict startDate to today's date or later
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('startDate').setAttribute('min', today);
+        document.getElementById('endDate').setAttribute('min', today);
+
+        function calculateCost() {
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+
+            if (endDate < startDate) {
+                alert("End date must be the same or later than start date.");
+                return;
+            }
+
+            const diffTime = Math.abs(endDate - startDate);
+            const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // Including the start date
+            const cost = days * 100;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `You have booked for <strong>${days} days</strong>. Total cost: <strong>Rs. ${cost}</strong>.`;
+        }
+
+        function downloadBooking() {
+            const username = document.getElementById('username').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            const result = document.getElementById('result').innerText;
+
+            if (!result) {
+                alert("Please calculate the cost before downloading.");
+                return;
+            }
+
+            const content = `Booking Details:\n\nUsername: ${username}\nStart Date: ${startDate}\nEnd Date: ${endDate}\n${result}`;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'booking_details.txt';
+            link.click();
+        }
+
+        function printBooking() {
+            const result = document.getElementById('result').innerText;
+
+            if (!result) {
+                alert("Please calculate the cost before printing.");
+                return;
+            }
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`<pre>${result}</pre>`);
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>

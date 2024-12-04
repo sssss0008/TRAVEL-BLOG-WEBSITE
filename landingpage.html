@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel & Tourism</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0077b6;
+            padding: 1rem 2rem;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: white;
+            color: #0077b6;
+            border-radius: 5px;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            list-style: none;
+            padding: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .dropdown-menu li {
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-menu li a {
+            color: #0077b6;
+            text-decoration: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #0077b6;
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 20px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 0.5rem;
+            width: 200px;
+        }
+
+        .search-bar button {
+            border: none;
+            background: none;
+            color: #0077b6;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            background: url('https://images.wallpapersden.com/image/download/san-francisco-bridges-golden-gate_ZmxuamaUmZqaraWkpJRma21lrWZlamU.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 2rem;
+            min-height: 70vh;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            color: white;
+            background: #0077b6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #005f8c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Travel&Explore</div>
+            <ul class="nav-links">
+                <li><a href="adminbashboard.php">Dashboard</a></li>
+                <li><a href="LOGIN.PHP">Admin Login</a></li>
+                <li class="dropdown">
+                    <a href="#destinations">Destinations</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#asia">Asia</a></li>
+                        <li><a href="#europe">Europe</a></li>
+                        <li><a href="#america">America</a></li>
+                        <li><a href="#africa">Africa</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search destinations...">
+                <button type="submit">&#128269;</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to Your Next Adventure!</h1>
+            <p>Explore the world with us.</p>
+            <button class="cta-btn">Discover More</button>
+        </section>
+    </main>
+    <script>
+        document.querySelector('.cta-btn').addEventListener('click', () => {
+            alert('Discover more about your next adventure!');
+        });
+    </script>
+</body>
+
+        <!-- gallery Begin -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-item-content {
+            padding: 15px;
+        }
+
+        .gallery-item-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #0077b6;
+        }
+
+        .gallery-item-description {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .gallery-item a {
+            text-decoration: none;
+            color: white;
+            background: #0077b6;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .gallery-item a:hover {
+            background: #005f8c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Travel Gallery</h1>
+    <div class="gallery">
+        <!-- Item 1 -->
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Image 1">
+            <div class="gallery-item-content">
+                <h3 class="gallery-item-title">Majestic Mountains</h3>
+                <p class="gallery-item-description">Explore the serene beauty of the snow-capped mountains.</p>
+                <a href="https://example.com/mountains" target="_blank">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Image 2">
+            <div class="gallery-item-content">
+                <h3 class="gallery-item-title">Golden Beaches</h3>
+                <p class="gallery-item-description">Relax on golden sandy beaches and enjoy the sunsets.</p>
+                <a href="https://example.com/beaches" target="_blank">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Image 3">
+            <div class="gallery-item-content">
+                <h3 class="gallery-item-title">Lush Forests</h3>
+                <p class="gallery-item-description">Discover the wonders of lush green forests.</p>
+                <a href="https://example.com/forests" target="_blank">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Image 4">
+            <div class="gallery-item-content">
+                <h3 class="gallery-item-title">Ancient Ruins</h3>
+                <p class="gallery-item-description">Step back in time and explore historical ruins.</p>
+                <a href="https://example.com/ruins" target="_blank">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="gallery-item">
+            <img src="https://via.placeholder.com/300x200" alt="Image 5">
+            <div class="gallery-item-content">
+                <h3 class="gallery-item-title">Cityscapes</h3>
+                <p class="gallery-item-description">Experience the energy of bustling city life.</p>
+                <a href="https://example.com/cityscapes" target="_blank">Learn More</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+     <!-- gallery end-->
+          <!-- guide Begin -->
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Travel Guides</title>
+              <style>
+                  body {
+                      font-family: Arial, sans-serif;
+                      margin: 0;
+                      padding: 0;
+                      background-color: #f9f9f9;
+                  }
+          
+                  h1 {
+                      text-align: center;
+                      margin: 20px 0;
+                      color: #333;
+                  }
+          
+                  .guide-section {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      gap: 20px;
+                      padding: 20px;
+                  }
+          
+                  .guide-item {
+                      background: white;
+                      border-radius: 10px;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      overflow: hidden;
+                      max-width: 300px;
+                      transition: transform 0.3s;
+                  }
+          
+                  .guide-item:hover {
+                      transform: scale(1.05);
+                  }
+          
+                  .guide-item img {
+                      width: 100%;
+                      height: auto;
+                  }
+          
+                  .guide-item-content {
+                      padding: 15px;
+                  }
+          
+                  .guide-item-title {
+                      font-size: 1.2rem;
+                      margin-bottom: 10px;
+                      color: #0077b6;
+                  }
+          
+                  .guide-item-description {
+                      font-size: 0.9rem;
+                      color: #555;
+                      margin-bottom: 15px;
+                  }
+          
+                  .guide-item a {
+                      text-decoration: none;
+                      color: white;
+                      background: #0077b6;
+                      padding: 10px 15px;
+                      border-radius: 5px;
+                      font-size: 0.9rem;
+                      transition: background 0.3s;
+                  }
+          
+                  .guide-item a:hover {
+                      background: #005f8c;
+                  }
+              </style>
+          </head>
+          <body>
+              <h1>Expert Travel Guides</h1>
+              <div class="guide-section">
+                  <!-- Guide 1 -->
+                  <div class="guide-item">
+                      <img src="https://via.placeholder.com/300x200" alt="Guide 1">
+                      <div class="guide-item-content">
+                          <h3 class="guide-item-title">John Doe</h3>
+                          <p class="guide-item-description">An experienced guide specializing in mountain expeditions and trekking.</p>
+                          <a href="guidebooking.html" target="_blank">Contact John</a>
+                      </div>
+                  </div>
+          
+                  <!-- Guide 2 -->
+                  <div class="guide-item">
+                      <img src="https://via.placeholder.com/300x200" alt="Guide 2">
+                      <div class="guide-item-content">
+                          <h3 class="guide-item-title">Sarah Lee</h3>
+                          <p class="guide-item-description">Expert in cultural tours and historical site explorations.</p>
+                          <a href="guidebooking.html" target="_blank">Contact Sarah</a>
+                      </div>
+                  </div>
+          
+                  <!-- Guide 3 -->
+                  <div class="guide-item">
+                      <img src="https://via.placeholder.com/300x200" alt="Guide 3">
+                      <div class="guide-item-content">
+                          <h3 class="guide-item-title">Mark Brown</h3>
+                          <p class="guide-item-description">Specializes in urban tours and nightlife experiences.</p>
+                          <a href="guidebooking.html" target="_blank">Contact Mark</a>
+                      </div>
+                  </div>
+          
+                  <!-- Guide 4 -->
+                  <div class="guide-item">
+                      <img src="https://via.placeholder.com/300x200" alt="Guide 4">
+                      <div class="guide-item-content">
+                          <h3 class="guide-item-title">Emily White</h3>
+                          <p class="guide-item-description">Your go-to guide for forest adventures and wildlife safaris.</p>
+                          <a href="guidebooking.html" target="_blank">Contact Emily</a>
+                      </div>
+                  </div>
+          
+                  <!-- Guide 5 -->
+                  <div class="guide-item">
+                      <img src="https://via.placeholder.com/300x200" alt="Guide 5">
+                      <div class="guide-item-content">
+                          <h3 class="guide-item-title">Alex Green</h3>
+                          <p class="guide-item-description">Expert in coastal tours and water-based activities.</p>
+                          <a href="guidebooking.html" target="_blank">Contact Alex</a>
+                      </div>
+                  </div>
+              </div>
+          </body>
+          </html>
+               <!-- Guide End -->
+
+
